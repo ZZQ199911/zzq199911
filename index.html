@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 - 王靖瑶副教授</title>
+    <style>
+        :root {
+            --primary-color: #1a56a7;
+            --secondary-color: #f5f5f5;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-text: #777;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-text {
+            flex: 1;
+            padding-left: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 15px;
+        }
+        
+        .subsection {
+            margin-bottom: 25px;
+        }
+        
+        .subsection-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .subsection-title i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 2px solid white;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-subtitle {
+            color: var(--light-text);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .skill-item {
+            background-color: var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .publication-list {
+            list-style-type: none;
+        }
+        
+        .publication-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+        
+        .publication-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .publication-authors {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .publication-venue {
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .gallery-caption h4 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .gallery-caption p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-text {
+                padding-left: 0;
+                margin-top: 20px;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="https://via.placeholder.com/150" alt="王靖瑶副教授" class="profile-img">
+            <div class="header-text">
+                <h1>王靖瑶</h1>
+                <p class="title">副教授，硕士研究生导师 | 厦门大学航空航天学院</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> zhangsan@xmu.edu.cn
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i> (0592) 218-XXXX
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i> 厦门大学翔安校区航空航天学院大楼
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i> github.com/zhangsan
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-user"></i>个人简介
+            </h2>
+            <div class="subsection">
+                <p>王靖瑶，厦门大学航空航天学院教授，硕士研究生导师。厦门大学航空航天学院自动化系副教授。2010年于内蒙古大学获得理学学士学位，2017年于北京大学获得力学系统与控制专业工学博士学位，2017年7月加入厦门大学自动化系工作。2013年10月至12月，曾在香港城市大学交流访问。2015年9月至2017年2月，作为联合培养博士生赴美国宾夕法尼亚州立大学交流访问。目前主要研究方向是多智能体系统的分布式协调控制研究、分布式优化及智能驾驶。</p>
+            </div>
+        </section>
+                
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-briefcase"></i>工作经历
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 - 至今</div>
+                    <div class="timeline-title">副教授</div>
+                    <div class="timeline-subtitle">厦门大学航空航天学院</div>
+                    <p>博士生导师，智能飞行器系统研究所所长</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2010 - 2015</div>
+                    <div class="timeline-title">副教授</div>
+                    <div class="timeline-subtitle">南京航空航天大学航空宇航学院</div>
+                    <p>硕士生导师，飞行器设计系副主任</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2005 - 2010</div>
+                    <div class="timeline-title">助理教授</div>
+                    <div class="timeline-subtitle">哈尔滨工业大学航天学院</div>
+                    <p>参与多项国家重大科研项目</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-flask"></i>研究方向
+            </h2>
+            <div class="skills-container">
+                <div class="skill-item">飞行器设计与控制</div>
+                <div class="skill-item">智能材料与结构</div>
+                <div class="skill-item">航空航天系统工程</div>
+                <div class="skill-item">无人机系统</div>
+                <div class="skill-item">空间机器人技术</div>
+                <div class="skill-item">飞行器健康监测</div>
+                <div class="skill-item">先进制造技术</div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-book"></i>代表性论文
+            </h2>
+            <ul class="publication-list">
+                <li class="publication-item">
+                    <div class="publication-title">基于深度强化学习的无人机自主避障控制方法</div>
+                    <div class="publication-authors">张三, 李四, 王五</div>
+                    <div class="publication-venue">《航空学报》, 2022, 43(5): 325-336</div>
+                </li>
+                <li class="publication-item">
+                    <div class="publication-title">A novel shape memory alloy based morphing wing design for UAVs</div>
+                    <div class="publication-authors">Zhang S., Wang L., Chen X.</div>
+                    <div class="publication-venue">Aerospace Science and Technology, 2021, 108: 106-118</div>
+                </li>
+                <li class="publication-item">
+                    <div class="publication-title">智能复合材料在航天器结构健康监测中的应用研究进展</div>
+                    <div class="publication-authors">张三, 赵六</div>
+                    <div class="publication-venue">《复合材料学报》, 2020, 37(4): 789-800</div>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i>科研项目
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2025</div>
+                    <div class="timeline-title">国家自然科学基金重点项目</div>
+                    <div class="timeline-subtitle">主持</div>
+                    <p>智能变形飞行器关键技术研究 (项目编号: 920XXXXX)</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2018 - 2022</div>
+                    <div class="timeline-title">国家重点研发计划课题</div>
+                    <div class="timeline-subtitle">主持</div>
+                    <p>空间机器人智能控制与自主决策技术 (项目编号: 2018YFBXXXXXX)</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 - 2020</div>
+                    <div class="timeline-title">国家自然科学基金面上项目</div>
+                    <div class="timeline-subtitle">主持</div>
+                    <p>基于智能材料的飞行器结构健康监测新方法 (项目编号: 5167XXXX)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-images"></i>成果展示
+            </h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <video controls poster="https://via.placeholder.com/300x200">
+                        <source src="sample.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
+                    <div class="gallery-caption">
+                        <h4>智能变形无人机演示</h4>
+                        <p>基于形状记忆合金的机翼变形技术，实现无人机在不同飞行状态下的最优气动性能</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200" alt="科研团队">
+                    <div class="gallery-caption">
+                        <h4>科研团队工作照</h4>
+                        <p>2022年实验室成员在风洞实验室进行无人机气动测试</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200" alt="专利证书">
+                    <div class="gallery-caption">
+                        <h4>发明专利证书</h4>
+                        <p>一种基于深度学习的无人机自主避障系统及方法 (专利号: ZL202010XXXXXX.X)</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <video controls poster="https://via.placeholder.com/300x200">
+                        <source src="sample2.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
+                    <div class="gallery-caption">
+                        <h4>空间机器人演示</h4>
+                        <p>自主开发的在轨服务机器人系统，具备目标识别、自主接近和操作能力</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-chalkboard-teacher"></i>教学情况
+            </h2>
+            <div class="subsection">
+                <h3 class="subsection-title">
+                    <i class="fas fa-book-open"></i>主讲课程
+                </h3>
+                <ul style="list-style-type: none;">
+                    <li style="margin-bottom: 10px;">
+                        <strong>飞行器设计与系统工程</strong> - 本科生专业核心课
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>智能材料与结构</strong> - 研究生学位课
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>航空航天前沿技术</strong> - 博士生研讨课
+                    </li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3 class="subsection-title">
+                    <i class="fas fa-user-graduate"></i>指导学生
+                </h3>
+                <p>已培养博士研究生12名，硕士研究生25名。指导本科生获全国大学生航空航天类竞赛一等奖3项。</p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 张三 - 厦门大学航空航天学院 | 最后更新: 2023年6月</p>
+        </div>
+    </footer>
+</body>
+</html>
